@@ -1,0 +1,45 @@
+#app {
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #2C5364, #203A43, #0F2027);
+    background: linear-gradient(to left, #2C5364, #203A43, #0F2027);
+}
+
+header {
+    height: 80px;
+    z-index: 99;
+    .nav-link {
+        color: white;
+        &:hover {
+            color: #e09f3e;
+        }
+    }
+    
+    .navbar-collapse{
+        z-index: 99;
+    }
+}
+
+.page-hero {
+    height: calc(100vh - 80px);
+
+    .type {
+        font-family: monospace;
+        color:#0000;
+        background:
+          linear-gradient(-90deg,#ffffff 5px,#0000 0) 10px 0,
+          linear-gradient(#ffffff 0 0) 0 0;
+        background-size:calc(var(--n)*1ch) 200%;
+        -webkit-background-clip:padding-box,text;
+        background-clip:padding-box,text;
+        background-repeat:no-repeat;
+        animation: 
+          b .7s infinite steps(1),   
+          t calc(var(--n)*0.3s) steps(var(--n)) forwards;
+        }
+        @keyframes t{
+            from {background-size:0 200%}
+        }
+        @keyframes b{
+            50% {background-position:0 -100%,0 0}
+    }
+}
