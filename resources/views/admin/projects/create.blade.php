@@ -13,7 +13,7 @@
 <div class="content">
     <div class="container mb-4">
 
-        <form action=" {{ route('admin.projects.store') }} " method="POST" enctype="multipart/form-data" class="row" autocomplete="off" >
+        <form action=" {{ route('admin.projects.store') }} " method="POST" enctype="multipart/form-data" class="row text-light" autocomplete="off" >
 
             @csrf
 
@@ -47,7 +47,29 @@
             {{-- errore validazione --}}
             @error('cover_img')
                 <div class="alert alert-warning py-1 m-0 fst-italic">{{ $message }}</div>
-            @enderror
+            @enderror 
+
+            {{-- Input type usando un ciclo--}}
+            <div class="form-group mt-3">
+                <label for="input-type_id" class="form-label">Project type:</label>
+                <select name="type_id" id="input-type_id" class="form-control">
+
+                    <option value="">-- Scegli una tipologia --</option>
+                    @foreach ($types as $elem)
+
+                        <option value="{{$elem->id}}">
+                            {{$elem->name}}
+                        </option>
+
+                    @endforeach
+
+                </select>
+            </div>
+            {{-- errore validazione --}}
+            @error('type_id')
+                <div class="alert alert-warning py-1 m-0 fst-italic">{{ $message }}</div>
+            @enderror 
+
             
             <div>
                 <button type="submit" class="btn btn-primary my-4 col-2 d-block mx-auto">

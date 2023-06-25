@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 // importo il modello
 use App\Models\Admin\Project;
 
+use App\Models\Admin\Type;
+
 // importo la classe Rule per le eccezioni nell'unique
 use Illuminate\Validation\Rule;
 
@@ -38,8 +40,10 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        // inserisco solo la view
-        return view('admin.projects.create');
+        // importo i type dal modello type
+        $types = Type::all();
+
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
@@ -53,6 +57,7 @@ class ProjectController extends Controller
 
         $request->validate(
             [
+                'type_id' => 'nullable|exists:types,id',
                 'title' => 'required|unique:projects',
                 'description' => 'nullable',
                 'cover_img' => 'nullable|image',
