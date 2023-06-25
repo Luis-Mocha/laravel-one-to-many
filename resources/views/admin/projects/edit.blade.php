@@ -53,6 +53,27 @@
                 <div class="alert alert-warning py-1 m-0 fst-italic">{{ $message }}</div>
             @enderror
 
+            {{-- Input type usando un ciclo--}}
+            <div class="form-group mt-3">
+                <label for="input-type_id" class="form-label">Project type:</label>
+                <select name="type_id" id="input-type_id" class="form-control">
+
+                    <option value="">-- Scegli una tipologia --</option>
+                    @foreach ($types as $elem)
+
+                        <option value="{{$elem->id}}" {{ old('type_id', $project->type_id) == $elem->id ? 'selected' : '' }}>
+                            {{$elem->name}}
+                        </option>
+
+                    @endforeach
+
+                </select>
+            </div>
+            {{-- errore validazione --}}
+            @error('type_id')
+                <div class="alert alert-warning py-1 m-0 fst-italic">{{ $message }}</div>
+            @enderror 
+
 
             {{-- Bottone Edit --}}
             <div>

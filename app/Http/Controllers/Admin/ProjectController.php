@@ -122,7 +122,10 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view( 'admin.projects.edit', compact ('project'));
+        // importo i type dal modello type
+        $types = Type::all();
+
+        return view( 'admin.projects.edit', compact ('project', 'types'));
     }
 
     /**
@@ -136,6 +139,7 @@ class ProjectController extends Controller
     {
         $request->validate(
             [
+                'type_id' => 'nullable|exists:types,id',
                 'title' => [
                     'required',
                     Rule::unique('projects')->ignore($project->id),
