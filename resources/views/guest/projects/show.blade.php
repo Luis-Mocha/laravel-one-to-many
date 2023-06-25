@@ -16,6 +16,12 @@
             <p>
                 {{$project['description']}}
             </p>
+
+            <div>
+                <span>Categoria progetto:</span>
+                {{$project->type->name}}
+            </div>
+
             <a href="{{$project['link_project']}}" target="_blank" rel="noopener noreferrer" class="text-primary">Link al progetto</a>
         </div>
 

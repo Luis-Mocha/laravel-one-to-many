@@ -42,6 +42,10 @@
 
                         <div class="fs-3">{{$elem['title']}}</div>
 
+                        {{-- <span>
+                            {{$elem->type->name}}
+                        </span> --}}
+
                     </a>
 
                 </div>
