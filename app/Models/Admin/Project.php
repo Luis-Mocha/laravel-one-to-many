@@ -30,4 +30,10 @@ class Project extends Model
         'cover_img',
         'link_project',
     ];
+
+    // Funzione per specificare la relazione con la tabella Types
+    public function type() {
+        return $this->belongsTo(Type::class);
+    }
+
 }
