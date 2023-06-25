@@ -32,7 +32,7 @@ return new class extends Migration
     {
         Schema::table('projects', function (Blueprint $table) {
 
-            // prima elimino la rtelazione e poi la colonna
+            // prima elimino la relazione e poi la colonna
             $table->dropForeign('projects_type_id_foreign');
             $table->dropColumn('type_id');
 
